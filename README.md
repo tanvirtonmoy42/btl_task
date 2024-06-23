@@ -7,169 +7,166 @@
     \
     \# Bad
 
-> class Classname {
+>     class Classname {
+>    
+>     }
+>    
+>     extension Extensionname on String {
+>    
+>     }
 >
-> }
->
-> extension Extensionname on String {
->
-> }
->
-> enum Enumname {
->
-> }
->
-> mixin Mixinname{}
->
-> typedef Functionname = void Function();
+>     enum Enumname {
+>    
+>     }
+>    
+>     mixin Mixinname{}
+>    
+>     typedef Functionname = void Function();
 >
 > // ClassName, ExtensionName, EnumName, MixinName and FunctionName are
 > in the UpperCamelCase format
 >
-> \# Good
+ \# Good
 >
-> class ClassName {}
->
-> extension ExtensionName on String {}
->
-> enum EnumName {}
->
-> mixin MixinName{}
->
-> typedef FunctionName = void Function();
+>     class ClassName {}
+>    
+>     extension ExtensionName on String {}
+>    
+>     enum EnumName {}
+>    
+>     mixin MixinName{}
+>    
+>     typedef FunctionName = void Function();
 
 2.  Libraries, packages, directories, and source files name should be in
     snake_case(lowercase_with_underscores)\
     \
     \# Bad
 
-> mypackage
+>     mypackage
+>    
+>     └─ lib
+>    
+>         └─ bottom-nav.dart
 >
-> └─ lib
+ \# Good
 >
-> └─ bottom-nav.dart
+>     my_package
+>    
+>     └─ lib
 >
-> \# Good
->
-> my_package
->
-> └─ lib
->
-> └─ bottom_nav.dart
+>         └─ bottom_nav.dart
 
 3.  **Name imports prefixes should be in
     snake_case(lower_with_underscores)**\
     \
     #Bad
 
-> import \'package:dio/dio.dart\' as Dio;
->
-> \# Good
->
-> import \'package:dio/dio.dart\' as dio;
+>     import \'package:dio/dio.dart\' as Dio;
+ 
+\# Good
 
-4.  **Variables, constants, parameters, and named parameters should be
+>     import \'package:dio/dio.dart\' as dio;
+
+4. **Variables, constants, parameters, and named parameters should be
     in lowerCamelCase.**\
     \
     \# Bad
 
-> int phone_number;
+>     int phone_number;
+>    
+>     const pie_value=3.14;
+>    
+>     // parameters
 >
-> const pie_value=3.14;
+>     double calculateBMI(int weight_in_kg, int height_in_meter) {
+>    
+>         return weight_in_kg / (height_in_meter \* height_in_meter);
+>    
+>     }
+>    
+>     //named parameters
+>    
+>     double calculateBMI({int? weight_in_kg, int? height_in_meter}) {
+>    
+>         return weight_in_kg / (height_in_meter \* height_in_meter);
+>    
+>     }
+>     
+\# Good
+
+>     int phoneNumber;   
+>     const pieValue=3.14;
+>    
+>     // parameters
+>    
+>     double calculateBMI(int weightInKg, int heightInMeter) {
+>    
+>         return weightInKg / (heightInMeter \* heightInMeter);
+>    
+>     }
+>    
+>     //named parameters
+>    
+>     double calculateBMI({int? weightInKg, int? heightInMeter}) {
+>    
+>         if(weightInKg !=null && heightInMeter !=null){
 >
-> // parameters
->
-> double calculateBMI(int weight_in_kg, int height_in_meter) {
->
-> return weight_in_kg / (height_in_meter \* height_in_meter);
->
-> }
->
-> //named parameters
->
-> double calculateBMI({int? weight_in_kg, int? height_in_meter}) {
->
-> return weight_in_kg / (height_in_meter \* height_in_meter);
->
-> }\
-> \
-> \# Good
->
-> int phoneNumber;
->
-> const pieValue=3.14;
->
-> // parameters
->
-> double calculateBMI(int weightInKg, int heightInMeter) {
->
-> return weightInKg / (heightInMeter \* heightInMeter);
->
-> }
->
-> //named parameters
->
-> double calculateBMI({int? weightInKg, int? heightInMeter}) {
->
-> if(weightInKg !=null && heightInMeter !=null){
->
-> return weightInKg / (heightInMeter \* heightInMeter);
->
-> }
->
-> }
+>             return weightInKg / (heightInMeter \* heightInMeter);
+>    
+>         }
+>    
+>     }
 
 5.  **Proper meaningful names should be followed.**\
-    \
+    
     \# Bad
 
-> Color bg;
->
-> int age(Date date);\
-> \
-> \# Good
->
-> Color backgroundColor;
->
-> int calculateAge(Date dob);
+>     Color bg;
+>     int age(Date date);
+>     
+ \# Good
+
+>     Color backgroundColor;
+>     int calculateAge(Date dob);
 
 6.  **Private variable names are preceded with underscores.**\
-    \
-    class ClassName {
-
-> String \_variableName;
+    
+>      class ClassName {
+>    
+>         String \_variableName;
 >
-> }
+>     }
 
 ## **Use Nullable operators:**
 
 1.  **?? (if null) operator:**\
-    \
+    
     \# Bad
 
-> String? name;
+>     String? name;
+>    
+>     name= name==null? \"unknown\": name;\
+
+ \# Good
 >
-> name= name==null? \"unknown\": name;\
-> \
-> \# Good
->
-> String? name;
->
-> name= name ?? \"unknown\";
+>     String? name;
+>    
+>     name= name ?? \"unknown\";
 
 2.  **?. (null aware) operator:**\
-    \
+    
     \# Bad
 
-> String? name;
->
-> name= name==null? null: name.length.toString();\
-> \
-> \# Good
->
-> String? name;
->
-> name=name?.length.toString();
+>     String? name;
+>    
+>     name= name==null? null: name.length.toString();\
+> 
+ \# Good
+
+>     String? name;
+>    
+>     name=name?.length.toString();
 
 3.  **Prefer is Operator Over as for Safer Type Checking:\
     **\
@@ -180,119 +177,119 @@
     \
     \# Bad
 
-> (person as Person).name=\"Ashish\";\
-> \
-> **\# Good**
->
-> if(person is Person){
->
-> person.name=\"Ashish\";
->
-> }
+>     (person as Person).name=\"Ashish\";\
+>     \
+>     **\# Good**
+>    
+>     if(person is Person){
+>    
+>     person.name=\"Ashish\";
+>    
+>     }
 
 4.  **Avoid the unnecessary creation of lambdas\
     \
     \# Bad**
 
-> **void main(){**
+>     **void main(){**
+>    
+>     **List\<int\> oddNumber=\[1,3,4,5,6,7,9,11\];**
+>    
+>     **oddNumber.forEach((number){**
+>    
+>     **print(number);**
+>    
+>     **});**
 >
-> **List\<int\> oddNumber=\[1,3,4,5,6,7,9,11\];**
->
-> **oddNumber.forEach((number){**
->
-> **print(number);**
->
-> **});**
->
-> **}\
-> \
-> \# Good**
->
-> **void main(){**
->
-> **List\<int\> oddNumber=\[1,3,4,5,6,7,9,11\];**
->
-> **oddNumber.forEach(print);**
->
-> **}**
+>     **}\
+>     \
+>     \# Good**
+>    
+>     **void main(){**
+>    
+>     **List\<int\> oddNumber=\[1,3,4,5,6,7,9,11\];**
+>    
+>     **oddNumber.forEach(print);**
+>    
+>     **}**
 
 ## **[Simplify Your Code with Spread Collection]{.underline}**
 
 > Utilizing spread collections simplifies the code when you already have
 > existing items stored in another collection.\
-> \
+> 
 > \# Bad
 >
-> List\<int\> firstFiveOddNumber=\[1,3,5,7,9\];
->
-> List\<int\> secondFiveOddNumber=\[11,13,15,17,19\];
->
-> firstFiveOddNumber.addAll(secondFiveOddNumber);\
-> \
-> \# Good
->
-> List\<int\> secondFiveOddNumber=\[11,13,15,17,19\];
->
-> List\<int\> firstFiveOddNumber=\[1,3,5,7,9,\...secondFiveOddNumber\];
+>     List\<int\> firstFiveOddNumber=\[1,3,5,7,9\];
+>    
+>     List\<int\> secondFiveOddNumber=\[11,13,15,17,19\];
+>    
+>     firstFiveOddNumber.addAll(secondFiveOddNumber);\
+>     \
+>     \# Good
+>    
+>     List\<int\> secondFiveOddNumber=\[11,13,15,17,19\];
+>    
+>     List\<int\> firstFiveOddNumber=\[1,3,5,7,9,\...secondFiveOddNumber\];
 
 ## **[Simplify Object Operations with the Cascades Operation:]{.underline}**
 
 The Cascades (..) operator is ideal for executing a series of operations
 on the same object, enabling a more concise and readable code.
 
-> class Person {
+>     class Person {
 >
-> String? name;
+>     String? name;
 >
-> int? age;
+>     int? age;
+>    
+>         Person({
+>    
+>         this.name,
 >
-> Person({
+>         this.age,
+>    
+>         });
+>    
+>     \@override
 >
-> this.name,
->
-> this.age,
->
-> });
->
-> \@override
->
-> String toString() {
->
-> return \"name: \$name age \$age\";
->
-> }
->
-> }\
-> \
-> \# Bad
->
-> void main(){
->
-> final person=Person();
->
-> person.name=\"Ashish\";
->
-> person.age=25;
->
-> print(person.toString());
->
-> }\
-> \
-> \# Good
->
-> void main(){
->
-> final person=Person();
->
-> person
->
-> ..name=\"Ashish\"
->
-> ..age=25;
->
-> print(person.toString());
->
-> }
+>     String toString() {
+>    
+>         return \"name: \$name age \$age\";
+>    
+>     }
+>    
+>     }
+>     
+ \# Bad
+
+>     void main(){
+>    
+>     final person=Person();
+>    
+>     person.name=\"Ashish\";
+>    
+>     person.age=25;
+>    
+>     print(person.toString());
+>    
+>     }\
+ \
+ \# Good
+
+>     void main(){
+>    
+>     final person=Person();
+>    
+>     person
+>    
+>     ..name=\"Ashish\"
+>    
+>     ..age=25;
+>    
+>     print(person.toString());
+>    
+>     }
 
 **\
 **
