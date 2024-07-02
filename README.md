@@ -154,13 +154,13 @@
 >    
 >     name= name ?? "";
 
-2.  **?. (null aware) operator:**\
+2.  **?. (null aware) operator:**
     
     \# Bad
 
 >     String? name;
 >    
->     name= name==null? null: name.length.toString();\
+>     name= name==null? null: name.length.toString();
 > 
  \# Good
 
@@ -168,7 +168,7 @@
 >    
 >     name=name?.length.toString();
 
-3.  **Prefer is Operator Over as for Safer Type Checking:\
+3.  **Prefer is Operator Over as for Safer Type Checking:
     **\
     To prevent potential exceptions, it is recommended to utilize the is
     operator instead of the as cast operator in Flutter. The is operator
@@ -177,62 +177,60 @@
     \
     \# Bad
 
->     (person as Person).name=\"Ashish\";\
->     \
->     **\# Good**
+>     (person as Person).name="Ashish";
+    
+**# Good**
 >    
 >     if(person is Person){
 >    
->     person.name=\"Ashish\";
+>     person.name="Ashish";
 >    
 >     }
 
-4.  **Avoid the unnecessary creation of lambdas\
-    \
-    \# Bad**
+4.  **Avoid the unnecessary creation of lambdas
 
->     **void main(){**
+**# Bad**
+
+>     void main(){
 >    
->     **List\<int\> oddNumber=\[1,3,4,5,6,7,9,11\];**
+>     List<int> oddNumber=[1,3,4,5,6,7,9,11];
 >    
->     **oddNumber.forEach((number){**
->    
->     **print(number);**
->    
->     **});**
+>     oddNumber.forEach((number){
+>         print(number);
+>     });
 >
->     **}\
->     \
->     \# Good**
+>     }
+>     
+   \# Good**
+   
+>     void main(){
 >    
->     **void main(){**
+>     List<int> oddNumber=[1,3,4,5,6,7,9,11];
 >    
->     **List\<int\> oddNumber=\[1,3,4,5,6,7,9,11\];**
+>     oddNumber.forEach(print);
 >    
->     **oddNumber.forEach(print);**
->    
->     **}**
+>     }
 
-## **[Simplify Your Code with Spread Collection]{.underline}**
+## **Simplify Your Code with Spread Collection**
 
 > Utilizing spread collections simplifies the code when you already have
 > existing items stored in another collection.\
 > 
 > \# Bad
 >
->     List\<int\> firstFiveOddNumber=\[1,3,5,7,9\];
+>     List<int> firstFiveOddNumber=[1,3,5,7,9];
 >    
->     List\<int\> secondFiveOddNumber=\[11,13,15,17,19\];
+>     List<int> secondFiveOddNumber=[11,13,15,17,19];
 >    
->     firstFiveOddNumber.addAll(secondFiveOddNumber);\
->     \
->     \# Good
+>     firstFiveOddNumber.addAll(secondFiveOddNumber);
+>     
+> \# Good
 >    
->     List\<int\> secondFiveOddNumber=\[11,13,15,17,19\];
+>     List<int> secondFiveOddNumber=[11,13,15,17,19];
 >    
->     List\<int\> firstFiveOddNumber=\[1,3,5,7,9,\...secondFiveOddNumber\];
+>     List<int> firstFiveOddNumber=[1,3,5,7,9,...secondFiveOddNumber];
 
-## **[Simplify Object Operations with the Cascades Operation:]{.underline}**
+## **Simplify Object Operations with the Cascades Operation**
 
 The Cascades (..) operator is ideal for executing a series of operations
 on the same object, enabling a more concise and readable code.
@@ -251,31 +249,31 @@ on the same object, enabling a more concise and readable code.
 >    
 >         });
 >    
->     \@override
+>     @override
 >
 >     String toString() {
 >    
 >         return \"name: \$name age \$age\";
 >    
->     }
+>         }
 >    
 >     }
 >     
- \# Bad
+ # Bad
 
 >     void main(){
 >    
 >     final person=Person();
 >    
->     person.name=\"Ashish\";
+>     person.name="Ashish";
 >    
 >     person.age=25;
 >    
 >     print(person.toString());
 >    
->     }\
- \
- \# Good
+>     }
+ 
+ # Good
 
 >     void main(){
 >    
@@ -283,7 +281,7 @@ on the same object, enabling a more concise and readable code.
 >    
 >     person
 >    
->     ..name=\"Ashish\"
+>     ..name="Ashish"
 >    
 >     ..age=25;
 >    
@@ -291,112 +289,110 @@ on the same object, enabling a more concise and readable code.
 >    
 >     }
 
-**\
+**
 **
 
-**\
-[Optimal Widget Rendering in Row and Column Using if
-Conditions:]{.underline}**
+**
+Optimal Widget Rendering in Row and Column Using if Conditions**
 
-**\# Bad**
+**# Bad**
 
-Column(
+    Column(
+    
+    children: [
+    
+    isLoggedIn
+    
+        ? ElevatedButton(
+    
+        onPressed: () {},
+    
+        child: const Text("Go to Login page"),
+        
+        )
+    
+        : const SizedBox(),
+    
+        ],
+    
+    ),
 
-children: \[
+**# Good**
 
-isLoggedIn
+    Column(
+    
+    children: [
+    
+    if(isLoggedIn)
+    
+    ElevatedButton(
+            
+        onPressed: () {},
+        
+        child: const Text("Go to Login page"),
+            
+            )
+    
+        ],
+    
+    ),
 
-? ElevatedButton(
+## **Use arrow function(() =>)**
 
-onPressed: () {},
+If a function has only a single statement, use the () => arrow function.
 
-child: const Text(\"Go to Login page\"),
+**# Bad**
 
-)
+    double calculateBMI(int weight_in_kg, int height_in_meter) {
+    
+    return weight_in_kg / (height_in_meter * height_in_meter);
+    
+    }
 
-: const SizedBox(),
+**# Good**
 
-\],
-
-),\
-\
-**\# Good**
-
-Column(
-
-children: \[
-
-if(isLoggedIn)
-
-ElevatedButton(
-
-onPressed: () {},
-
-child: const Text(\"Go to Login page\"),
-
-)
-
-\],
-
-),
-
-## **[Use arrow function(() =\>):]{.underline}**
-
-If a function has only a single statement, use the () =\> arrow
-function.\
-\
-**\# Bad**
-
-double calculateBMI(int weight_in_kg, int height_in_meter) {
-
-return weight_in_kg / (height_in_meter \* height_in_meter);
-
-}\
-\
-**\# Good**
-
-double calculateBMI(int weight_in_kg, int height_in_meter) =\>
-
-weight_in_kg / (height_in_meter \* height_in_meter);
-
-## **[Remove any print statements, unused and commented code:]{.underline}**
+    double calculateBMI(int weight_in_kg, int height_in_meter) =>
+    
+    weight_in_kg / (height_in_meter * height_in_meter);
+    
+## **Remove any print statements, unused and commented code:**
 
 To improve production code, it is important to remove print statements
 used for debugging and logging. Eliminating unused code enhances
 readability and reduces file size while removing commented-out code
 improves maintainability. For logging, log() and debugPrint() are
 recommended over print as they provide better control and formatting
-options and prevent log line discarding in certain situations.\
-\
-**\# Bad**
+options and prevent log line discarding in certain situations.
 
-\# production mode
+**# Bad**
 
-// commented message\-\--main method
+    # production mode
+    
+    // commented message---main method
+    
+    void main(){
+    
+    print("print statement");
+    
+    //..rest of code
 
-void main(){
+    }
+    
+    void unusedFunction(){
+    
+    }
 
-print(\"print statement\");
+**# Good**
 
-//..rest of code
+    # production mode
+    
+    void main(){
+    
+    //..rest of code
+    
+    }
 
-}
-
-void unusedFunction(){
-
-}\
-\
-**\# Good**
-
-\# production mode
-
-void main(){
-
-//..rest of code
-
-}
-
-## **[Proper folder structure]{.underline}**
+## **Proper folder structure**
 
 1.  Segregation of code into a proper folder structure depending on
     architecture.
@@ -405,231 +401,230 @@ void main(){
     appropriately.
 
 3.  Try to make code reusable with the help of helper functions in
-    utility files saved in the utils folder.\
-    \
-    \# utils.dart
+    utility files saved in the utils folder.
+    
+    # utils.dart
 
-> import \'package:intl/intl.dart\';
->
-> String formatDateTime(DateTime dateTime) {
->
-> final formatter = DateFormat(\'yyyy-MM-dd HH:mm:ss\');
->
-> return formatter.format(dateTime);
->
-> }
+>     import \'package:intl/intl.dart\';
+>    
+>     String formatDateTime(DateTime dateTime) {
+>    
+>     final formatter = DateFormat(\'yyyy-MM-dd HH:mm:ss\');
+>    
+>     return formatter.format(dateTime);
+>    
+>     }
 
 4.  Widgets should also be designed to be reusable and can be saved in a
     widgets folder separately.
 
-> \# text_input.dart
->
-> import \'package:flutter/material.dart\';
->
-> class TextInput extends StatelessWidget {
->
-> final String? label;
->
-> final String? hintText;
->
-> final TextEditingController? controller;
->
-> final TextInputType keyboardType;
->
-> final bool obscureText;
->
-> final String? Function(String?)? validator;
->
-> final Widget? suffix;
->
-> const TextInput({
->
-> this.label,
->
-> this.hintText,
->
-> this.suffix,
->
-> this.controller,
->
-> this.validator,
->
-> this.obscureText = false,
->
-> this.keyboardType = TextInputType.text,
->
-> });
->
-> \@override
->
-> Widget build(BuildContext context) {
->
-> return TextFormField(
->
-> decoration: InputDecoration(
->
-> labelText: label,
->
-> hintText:hintText
->
-> suffixIcon:suffix,
->
-> ),
->
-> controller: controller,
->
-> obscureText: obscureText,
->
-> validator:validator
->
-> keyboardType: keyboardType,
->
-> );
->
-> }
->
-> }
+# text_input.dart
+    
+>     import 'package:flutter/material.dart';
+>    
+>     class TextInput extends StatelessWidget {
+>    
+>     final String? label;
+>    
+>     final String? hintText;
+>    
+>     final TextEditingController? controller;
+>    
+>     final TextInputType keyboardType;
+>    
+>     final bool obscureText;
+>    
+>     final String? Function(String?)? validator;
+>    
+>     final Widget? suffix;
+>    
+>     const TextInput({
+>    
+>     this.label,
+>    
+>     this.hintText,
+>    
+>     this.suffix,
+>    
+>     this.controller,
+>    
+>     this.validator,
+>    
+>     this.obscureText = false,
+>    
+>     this.keyboardType = TextInputType.text,
+>    
+>     });
+>    
+>     @override
+>    
+>     Widget build(BuildContext context) {
+>    
+>     return TextFormField(
+>        
+>         decoration: InputDecoration(
+>    
+>             labelText: label,
+>    
+>             hintText:hintText
+>    
+>             suffixIcon:suffix,
+>    
+>         ),
+>    
+>         controller: controller,
+>    
+>         obscureText: obscureText,
+>    
+>         validator:validator
+>    
+>         keyboardType: keyboardType,
+>    
+>         );
+>    
+>         }
+>    
+>     }
 
 5.  Avoid using static or hard-coded strings in UI screens, it is
     recommended to organize them in separate folders or files according
-    to their scope.\
-    \
+    to their scope.
+
     **#Bad**
 
-> class LoginPage extends StatelessWidget {
->
-> const LoginPage({super.key});
->
-> \@override
->
-> Widget build(BuildContext context) {
->
-> return Scaffold(
->
-> appBar: AppBar(
->
-> backgroundColor: const Color(0xff000000), // bad
->
-> title: const Text(\"Login page\"),
->
-> ),
->
-> body: Column(
->
-> children: \[
->
-> TextInput(
->
-> label: \"email\",
->
-> hintText: \"email address\",
->
-> validator: (value) { // bad
->
-> if (value!.isEmpty) {
->
-> return \'Please enter\';
->
-> } else {
->
-> return null;
->
-> }
->
-> },
->
-> )
->
-> \],
->
-> ),
->
-> );
->
-> }
->
-> }\
-> \
-> **\# Good\
-> **
->
-> \# validators/
->
-> common_validator.dart
->
-> mixin CommonValidator{
->
-> String? emptyValidator(String value) {
->
-> if (value.isEmpty) {
->
-> return \'Please enter\';
->
-> } else {
->
-> return null;
->
-> }
->
-> }
->
-> }
->
-> #config/themes
->
-> colors.dart
->
-> class AppColors{
->
-> static const white=Color(0xffffffff);
->
-> static const black=Color(0xff000000);
->
-> }
->
-> class LoginPage extends StatelessWidget with CommonValidator {
->
-> const LoginPage({super.key});
->
-> \@override
->
-> Widget build(BuildContext context) {
->
-> return Scaffold(
->
-> appBar: AppBar(
->
-> backgroundColor: AppColors.black, // good
->
-> title: const Text(\"Login page\"),
->
-> ),
->
-> body: Column(
->
-> children: \[
->
-> TextInput(
->
-> label: \"email\",
->
-> hintText: \"email address\",
->
-> validator: emptyValidator, // good
->
-> )
->
-> \],
->
-> ),
->
-> );
->
-> }
->
-> }
+>     class LoginPage extends StatelessWidget {
+>    
+>     const LoginPage({super.key});
+>    
+>     @override
+>    
+>     Widget build(BuildContext context) {
+>    
+>     return Scaffold(
+>    
+>         appBar: AppBar(
+>    
+>         backgroundColor: const Color(0xff000000), // bad
+>    
+>         title: const Text("Login page"),
+>    
+>         ),
+>    
+>         body: Column(
+>    
+>             children: [
+>    
+>                 TextInput(
+>    
+>                 label: "email",
+>    
+>                 hintText: "email address",
+>    
+>                 validator: (value) { // bad
+>    
+>                     if (value!.isEmpty) {
+>    
+>                         return 'Please enter';
+>    
+>                         } else {
+>    
+>                         return null;
+>    
+>                          }
+>    
+>                     },
+>    
+>                 )
+>    
+>             ],
+>    
+>         ),
+>    
+>         );
+>    
+>         }
+>    
+>     }
 
-## **[Widget Organization:]{.underline}**
+ **# Good**
+
+> # validators    
+>
+>     common_validator.dart
+>    
+>     mixin CommonValidator{
+>
+>     String? emptyValidator(String value) {
+>    
+>     if (value.isEmpty) {
+>    
+>     return \'Please enter\';
+>    
+>     } else {
+>    
+>     return null;
+>    
+>     }
+>    
+>     }
+>    
+>     }
+>
+ #config/themes
+
+>     colors.dart
+>    
+>     class AppColors{
+>    
+>     static const white=Color(0xffffffff);
+>    
+>     static const black=Color(0xff000000);
+>    
+>     }
+>    
+>     class LoginPage extends StatelessWidget with CommonValidator {
+>    
+>     const LoginPage({super.key});
+>    
+>     @override
+>    
+>     Widget build(BuildContext context) {
+>    
+>         return Scaffold(
+>    
+>         appBar: AppBar(
+>    
+>             backgroundColor: AppColors.black, // good
+>    
+>             title: const Text("Login page"),
+>    
+>         ),
+>    
+>         body: Column(
+>    
+>          children: [
+>    
+>         TextInput(
+>
+>             label: "email",
+>    
+>             hintText: "email address",
+>    
+>             validator: emptyValidator, // good
+>    
+>             )
+>    
+>             ],
+>    
+>         ),
+>    
+>         );
+>    
+>         }
+>    
+>     }
+
+## **Widget Organization:**
 
 1.  Split the widget into different Widgets instead of the same file.
 
@@ -640,8 +635,8 @@ void main(){
     setState() call rebuilds only the part of the subtree, whose UI
     actually needs to change.
 
-> **\# Bad**
->
+ **# Bad**
+
 > class LoginPage extends StatefulWidget {
 >
 > const LoginPage({super.key});
