@@ -388,34 +388,34 @@ options and prevent log line discarding in certain situations.
 
     **# Bad**
 
->     class LoginPage extends StatelessWidget {
->     const LoginPage({super.key});
->     
->      @override
->      Widget build(BuildContext context) {
->        return Scaffold(
->          appBar: AppBar(
->            backgroundColor: const Color(0xff000000), // bad
->            title: const Text("Login page"),
->          ),
->          body: Column(
->            children: [
->          TextInput(
->                label: "email",
->                hintText: "email address",
->                validator: (value) {   // bad
->                  if (value!.isEmpty) {
->                    return 'Please enter';
->                  } else {
->                    return null;
->                  }
->                },
->              )
->            ],
->          ),
->        );
->      }
->     }
+     class LoginPage extends StatelessWidget {
+     const LoginPage({super.key});
+     
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: const Color(0xff000000), // bad
+            title: const Text("Login page"),
+          ),
+          body: Column(
+            children: [
+          TextInput(
+                label: "email",
+                hintText: "email address",
+                validator: (value) {   // bad
+                  if (value!.isEmpty) {
+                    return 'Please enter';
+                  } else {
+                    return null;
+                  }
+                },
+              )
+            ],
+          ),
+        );
+      }
+     }
 
 
  **# Good**
@@ -560,15 +560,15 @@ options and prevent log line discarding in certain situations.
     
     **# Bad**
 
->     import 'widgets/text_input.dart';
->     import 'widgets/button.dart';
->     import '../widgets/custom_tile.dart';
+     import 'widgets/text_input.dart';
+     import 'widgets/button.dart';
+     import '../widgets/custom_tile.dart';
 
  **# Good**
  
->     import 'package:coding_guidelines/widgets/text_input.dart';
->     import 'package:coding_guidelines/widgets/button.dart'
->     import 'package:coding_guidelines/widgets/custom_tile.dart';
+     import 'package:coding_guidelines/widgets/text_input.dart';
+     import 'package:coding_guidelines/widgets/button.dart'
+     import 'package:coding_guidelines/widgets/custom_tile.dart';
 
 2.  **Avoid empty else statements**
 
@@ -576,23 +576,23 @@ options and prevent log line discarding in certain situations.
     
     **# Bad**
 
->     void f(int x) {
->      print('debug: $x');
->      ...
->     }
+     void f(int x) {
+      print('debug: $x');
+      ...
+     }
 
 
  # Good
 
->     void f(int x) {
->      debugPrint('debug: $x');
->     }
+     void f(int x) {
+      debugPrint('debug: $x');
+     }
 
  **or**
 
->     void f(int x) {
->      Logger().i('debug: $x');
->     }
+     void f(int x) {
+      Logger().i('debug: $x');
+     }
 
 
 ## **Proper state management**
@@ -622,41 +622,41 @@ options and prevent log line discarding in certain situations.
 
  **# Bad**
 
->     final dio = Dio();
->      
->     Future<dynamic> fetchNetworkData() {
->     dio.get('endpoint').then((data){
->        return data;
->     )}.catchError((e) {
->        log.error(e);
->        return e;
->      });
->     }
+     final dio = Dio();
+      
+     Future<dynamic> fetchNetworkData() {
+     dio.get('endpoint').then((data){
+        return data;
+     )}.catchError((e) {
+        log.error(e);
+        return e;
+      });
+     }
 
 
  **# Good**
 
->     final dio = Dio()
->        ..interceptors.add(PrettyDioLogger(
->          requestHeader: true,
->          requestBody: true,
->          responseBody: true,
->          responseHeader: false,
->          compact: false,
->        ));
->     
->     Future<dynamic> fetchNetworkData() async{
->      try {
->        // Simulating an asynchronous network call
->        final data= await dio.get('endpoint');
->         return data;
->      } catch (e, stackTrace) {
->        Logger().e('An exception occurred: $e');
->        Logger().e('Stack trace: $stackTrace');
->        return e;
->       // Perform additional error handling actions
->      }
->     }
+     final dio = Dio()
+        ..interceptors.add(PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: false,
+          compact: false,
+        ));
+     
+     Future<dynamic> fetchNetworkData() async{
+      try {
+        // Simulating an asynchronous network call
+        final data= await dio.get('endpoint');
+         return data;
+      } catch (e, stackTrace) {
+        Logger().e('An exception occurred: $e');
+        Logger().e('Stack trace: $stackTrace');
+        return e;
+       // Perform additional error handling actions
+      }
+     }
 
 
 
@@ -706,7 +706,7 @@ options and prevent log line discarding in certain situations.
 -   Follow Git best practices, such as creating meaningful commit
     messages and branching strategies.
 
-> Github Rules(by Shohel Rana):
+**Github Rules** (by Shohel Rana):
 
 1.  Create a branch
     -- DEV/BUG-Ticket-No-Ticket Title \[Short Title\]
