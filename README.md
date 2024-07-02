@@ -670,32 +670,32 @@ options and prevent log line discarding in certain situations.
 -   Aim for high code coverage, especially for critical parts of your
     app.
 
->     void main() {
->      IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-> 
->      group('end-to-end test', () {
->        testWidgets('tap on the floating action button, verify counter',
->            (tester) async {
->          app.main();    
->          await tester.pumpAndSettle();
->     
->          // Verify the counter starts at 0.
->          expect(find.text('0'), findsOneWidget);
-> 
->          // Finds the floating action button to tap on.
->          final Finder fab = find.byTooltip('Increment');
-> 
->          // Emulate a tap on the floating action button.
->          await tester.tap(fab);
->     
->          // Trigger a frame.
->          await tester.pumpAndSettle();
->     
->          // Verify the counter increments by 1.
->          expect(find.text('1'), findsOneWidget);
->        });
->      });
->     }
+     void main() {
+      IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+ 
+      group('end-to-end test', () {
+        testWidgets('tap on the floating action button, verify counter',
+            (tester) async {
+          app.main();    
+          await tester.pumpAndSettle();
+     
+          // Verify the counter starts at 0.
+          expect(find.text('0'), findsOneWidget);
+ 
+          // Finds the floating action button to tap on.
+          final Finder fab = find.byTooltip('Increment');
+ 
+          // Emulate a tap on the floating action button.
+          await tester.tap(fab);
+     
+          // Trigger a frame.
+          await tester.pumpAndSettle();
+     
+          // Verify the counter increments by 1.
+          expect(find.text('1'), findsOneWidget);
+        });
+      });
+     }
 
 
 ## **Version Control and Collaboration**
