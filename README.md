@@ -57,11 +57,11 @@
     
    **# Bad**
 
->     import \'package:dio/dio.dart\' as Dio;
+>     import 'package:dio/dio.dart' as Dio;
  
    **# Good**
 
->     import \'package:dio/dio.dart\' as dio;
+>     import 'package:dio/dio.dart' as dio;
 
 4. **Variables, constants, parameters, and named parameters should be
     in lowerCamelCase.**
