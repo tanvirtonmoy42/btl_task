@@ -801,27 +801,27 @@ on writing amazing applications and less on mundane tasks.
 1.  You can use ***Dart Data Class Generator*** by hzgood for generating
     data classes in vsCode.
     
-> Name: Dart Data Class Generator
-
-> Id: hzgood.dart-data-class-generator
->
-> Publisher: hzgood
->
-> VS Marketplace Link:
-> [[https://marketplace.visualstudio.com/items?itemName=hzgood.dart-data-class-generator]](https://marketplace.visualstudio.com/items?itemName=hzgood.dart-data-class-generator)
->
-> Using this package you can generate all commonly used components that
-> are used in a data model including formMap, toMap etc. It also
-> supports auto generated null safety.
+    > Name: Dart Data Class Generator
+    
+    > Id: hzgood.dart-data-class-generator
+    >
+    > Publisher: hzgood
+    >
+    > VS Marketplace Link:
+    > [[https://marketplace.visualstudio.com/items?itemName=hzgood.dart-data-class-generator]](https://marketplace.visualstudio.com/items?itemName=hzgood.dart-data-class-generator)
+    >
+    > Using this package you can generate all commonly used components that
+    > are used in a data model including formMap, toMap etc. It also
+    > supports auto generated null safety.
 
 2.  **Flutter Riverpod Snippets**: It helps by generating codes for
     riverpod provider depending on your needs.
 
-> Name: Flutter Riverpod Snippets
->
-> Id: robert-brunhage.flutter-riverpod-snippets
->
-> Publisher: Robert Brunhage
->
-> VS Marketplace Link:
-> [[https://marketplace.visualstudio.com/items?itemName=robert-brunhage.flutter-riverpod-snippets]](https://marketplace.visualstudio.com/items?itemName=robert-brunhage.flutter-riverpod-snippets)
+    > Name: Flutter Riverpod Snippets
+    >
+    > Id: robert-brunhage.flutter-riverpod-snippets
+    >
+    > Publisher: Robert Brunhage
+    >
+    > VS Marketplace Link:
+    > [[https://marketplace.visualstudio.com/items?itemName=robert-brunhage.flutter-riverpod-snippets]](https://marketplace.visualstudio.com/items?itemName=robert-brunhage.flutter-riverpod-snippets)
