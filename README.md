@@ -785,52 +785,42 @@ options and prevent log line discarding in certain situations.
     
     **# Bad**
 
-> import \'widgets/text_input.dart\';
->
-> import \'widgets/button.dart\'
->
-> import \'../widgets/custom_tile.dart\';\
-> \
-> **\# Good\
-> **
->
-> import \'package:coding_guidelines/widgets/text_input.dart\';
->
-> import \'package:coding_guidelines/widgets/button.dart\'
->
-> import \'package:coding_guidelines/widgets/custom_tile.dart\';
+>     import 'widgets/text_input.dart';
+>     import 'widgets/button.dart';
+>     import '../widgets/custom_tile.dart';
+
+ **# Good**
+ 
+>     import 'package:coding_guidelines/widgets/text_input.dart';
+>     import 'package:coding_guidelines/widgets/button.dart'
+>     import 'package:coding_guidelines/widgets/custom_tile.dart';
 
 2.  **Avoid empty else statements**
 
 3.  **Avoid print statements. Use debugPrint or Logger instead**\
-    \
-    **\# Bad**
+    
+    **# Bad**
 
-> void f(int x) {
->
-> print(\'debug: \$x\');
->
-> \...
->
-> }
->
-> \# Good
->
-> void f(int x) {
->
-> debugPrint(\'debug: \$x\');
->
-> }\
-> \
-> **or**
->
-> void f(int x) {
->
-> Logger().i(\'debug: \$x\');
->
-> }
+>     void f(int x) {
+>      print('debug: $x');
+>      ...
+>     }
 
-## **[Proper state management]{.underline}**
+
+ # Good
+
+>     void f(int x) {
+>      debugPrint('debug: $x');
+>     }
+
+ **or**
+
+>     void f(int x) {
+>      Logger().i('debug: $x');
+>     }
+
+
+## **Proper state management**
 
 -   Use Riverpod as the recommended package for state management..
 
@@ -839,7 +829,7 @@ options and prevent log line discarding in certain situations.
 
 -   Business logic should be separated from the UI.
 
-## **[Using Third-party packages:]{.underline}**
+## **Using Third-party packages:**
 
 -   Validate any third-party package being used in the application as
     sometimes it might break the build or not be in sync with the
@@ -847,7 +837,7 @@ options and prevent log line discarding in certain situations.
     upgrading Flutter, so make sure to check all your plugins and
     third-party packages after an upgrade.
 
-## **[Error Handling and Logging:]{.underline}**
+## **Error Handling and Logging:**
 
 -   Properly handle exceptions and errors in your code using try-catch
     blocks.
@@ -855,70 +845,47 @@ options and prevent log line discarding in certain situations.
 -   Use logging libraries like pretty_dio_logger or dio_logger to log
     important events or errors.
 
-> **\# Bad\
-> **
->
-> final dio = Dio();
->
-> Future\<dynamic\> fetchNetworkData() {
->
-> dio.get(\'endpoint\').then((data){
->
-> return data;
->
-> )}.catchError((e) {
->
-> log.error(e);
->
-> return e;
->
-> });
->
-> }
->
-> **\# Good**
->
-> final dio = Dio()
->
-> ..interceptors.add(PrettyDioLogger(
->
-> requestHeader: true,
->
-> requestBody: true,
->
-> responseBody: true,
->
-> responseHeader: false,
->
-> compact: false,
->
-> ));
->
-> Future\<dynamic\> fetchNetworkData() async{
->
-> try {
->
-> // Simulating an asynchronous network call
->
-> final data= await dio.get(\'endpoint\');
->
-> return data;
->
-> } catch (e, stackTrace) {
->
-> Logger().e(\'An exception occurred: \$e\');
->
-> Logger().e(\'Stack trace: \$stackTrace\');
->
-> return e;
->
-> // Perform additional error handling actions
->
-> }
->
-> }
+ **# Bad**
 
-## **[Testing]{.underline}**
+>     final dio = Dio();
+>      
+>     Future<dynamic> fetchNetworkData() {
+>     dio.get('endpoint').then((data){
+>        return data;
+>     )}.catchError((e) {
+>        log.error(e);
+>        return e;
+>      });
+>     }
+
+
+ **# Good**
+
+>     final dio = Dio()
+>        ..interceptors.add(PrettyDioLogger(
+>          requestHeader: true,
+>          requestBody: true,
+>          responseBody: true,
+>          responseHeader: false,
+>          compact: false,
+>        ));
+>     
+>     Future<dynamic> fetchNetworkData() async{
+>      try {
+>        // Simulating an asynchronous network call
+>        final data= await dio.get('endpoint');
+>         return data;
+>      } catch (e, stackTrace) {
+>        Logger().e('An exception occurred: $e');
+>        Logger().e('Stack trace: $stackTrace');
+>        return e;
+>       // Perform additional error handling actions
+>      }
+>     }
+
+
+
+## **Testing**
 
 -   Write unit tests and widget tests to ensure the correctness of your
     code.
@@ -928,47 +895,35 @@ options and prevent log line discarding in certain situations.
 -   Aim for high code coverage, especially for critical parts of your
     app.
 
-> void main() {
->
-> IntegrationTestWidgetsFlutterBinding.ensureInitialized();
->
-> group(\'end-to-end test\', () {
->
-> testWidgets(\'tap on the floating action button, verify counter\',
->
-> (tester) async {
->
-> app.main();
->
-> await tester.pumpAndSettle();
->
-> // Verify the counter starts at 0.
->
-> expect(find.text(\'0\'), findsOneWidget);
->
-> // Finds the floating action button to tap on.
->
-> final Finder fab = find.byTooltip(\'Increment\');
->
-> // Emulate a tap on the floating action button.
->
-> await tester.tap(fab);
->
-> // Trigger a frame.
->
-> await tester.pumpAndSettle();
->
-> // Verify the counter increments by 1.
->
-> expect(find.text(\'1\'), findsOneWidget);
->
-> });
->
-> });
->
-> }
+>     void main() {
+>      IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+> 
+>      group('end-to-end test', () {
+>        testWidgets('tap on the floating action button, verify counter',
+>            (tester) async {
+>          app.main();    
+>          await tester.pumpAndSettle();
+>     
+>          // Verify the counter starts at 0.
+>          expect(find.text('0'), findsOneWidget);
+> 
+>          // Finds the floating action button to tap on.
+>          final Finder fab = find.byTooltip('Increment');
+> 
+>          // Emulate a tap on the floating action button.
+>          await tester.tap(fab);
+>     
+>          // Trigger a frame.
+>          await tester.pumpAndSettle();
+>     
+>          // Verify the counter increments by 1.
+>          expect(find.text('1'), findsOneWidget);
+>        });
+>      });
+>     }
 
-## **[Version Control and Collaboration]{.underline}**
+
+## **Version Control and Collaboration**
 
 -   Use version control systems like Git to track changes and
     collaborate with other developers.
@@ -978,86 +933,71 @@ options and prevent log line discarding in certain situations.
 
 > Github Rules(by Shohel Rana):
 
-1.  Create a branch\
-    \-- DEV/BUG-Ticket-No-Ticket Title \[Short Title\]
+1.  Create a branch
+    -- DEV/BUG-Ticket-No-Ticket Title \[Short Title\]
 
-2.  Commit Message\
-    \-- DEV/BUG-Ticket-No-Ticket Title \[Too Short Title\]: Your
-    message\
-    \-- Add a ticket link\
-    \-- Review yourself and add only one label: Initial Review Passed
-    \[After reviewed\]
+2.  Commit Message
+    -- DEV/BUG-Ticket-No-Ticket Title [Too Short Title]: Your message
+    -- Add a ticket link
+    -- Review yourself and add only one label: Initial Review Passed [After reviewed]
 
-3.  Before Commit\
-    \-- Add In draft or In Progress label (Who does not have access to
-    draft)
+3.  Before Commit
+    -- Add In draft or In Progress label (Who does not have access to draft)
 
-4.  Need to add some comments when you reviewed someone\'s code
+4.  Need to add some comments when you reviewed someone's code
 
 5.  Naming of variables and functions should be meaningful
 
 6.  All static data will come from constant.
 
-### **Use [[Future.wait]{.underline}](https://api.flutter.dev/flutter/dart-async/Future/wait.html) to make concurrent API calls:**
+### **Use [Future.wait] to make concurrent API calls:**
 
 By using **Future.wait**, you can initiate multiple async tasks at the
 same time. Thereby reducing the overall execution time.
 
-**//! BAD**
+**//# BAD**
 
-Future callMultipleApis() async {
+     Future callMultipleApis() async { 
+       await getUserInfo(); 
+       await getLocations();
+     }
 
-await getUserInfo();
 
-await getLocations();
+**//# GOOD**
 
-}
+     Future callMultipleApis() async { 
+       await Future.wait([
+         getUserInfo(), 
+         getLocations(), 
+       ]);
+     }
 
-**//\* GOOD**
 
-Future callMultipleApis() async {
 
-await Future.wait(\[
-
-getUserInfo(),
-
-getLocations(),
-
-\]);
-
-}
-
-### **[Avoid mental mapping:]{.underline}**
+### **Avoid mental mapping:**
 
 We have a list that contains staff names:
 
-const staffs = \[\'Holmes\', \'Dane\', \'Dyno\', \'Maker\'\];
+     const staffs = ['Holmes', 'Dane', 'Dyno', 'Maker'];
 
-**//! BAD**
+**# BAD**
 
-for (final n in staffs) {
+     for (final n in staffs) { 
+       doSomething(); 
+       //... 
+       //"n" is defined as what? 
+       doStuff(n);
+     }
 
-doSomething();
 
-//\...
+**# GOOD**
 
-//\"n\" is defined as what?
+    for (final staffName in staffs) { 
+      doSomething(); 
+      //... 
+      doStuff(staffName);
+    }
 
-doStuff(n);
-
-}
-
-**//\* GOOD**
-
-for (final staffName in staffs) {
-
-doSomething();
-
-//\...
-
-doStuff(staffName);
-
-}
 
 **[Data Class helpers:]{.underline}**
 
@@ -1074,26 +1014,24 @@ you; however, you still have to run the code generation step which is
 not ideal.
 
 With Equatable there is no code generation needed and we can focus more
-on writing amazing applications and less on mundane tasks.\
-\
-**class** **Person** **extends** **Equatable** {
+on writing amazing applications and less on mundane tasks.
 
-**const** Person(**this**.name);
+    class Person extends Equatable {
+      const Person(this.name);
+    
+      final String name;
+    
+      @override
+      List<Object> get props => [name];
+    }
 
-**final** String name;
 
-**\@override**
-
-List\<Object\> **get** props =\> \[name\];
-
-}
-
-**[Code Generator helper:]{.underline}**
+**Code Generator helper:**
 
 1.  You can use ***Dart Data Class Generator*** by hzgood for generating
-    data classes in vsCode.\
-    \
-    Name: Dart Data Class Generator
+    data classes in vsCode.
+    
+> Name: Dart Data Class Generator
 
 > Id: hzgood.dart-data-class-generator
 >
