@@ -6,115 +6,111 @@
     
     **# Bad**
 
->     class Classname {
->     }
->     
->     extension Extensionname on String {
->     }
->     
->     enum Enumname {
->     }
->     mixin Mixinname{}
->     
->     typedef Functionname = void Function();
->    
->     // ClassName, ExtensionName, EnumName, MixinName and FunctionName are
->     in the UpperCamelCase format
+         class Classname {
+         }
+         
+         extension Extensionname on String {
+         }
+         
+         enum Enumname {
+         }
+         mixin Mixinname{}
+         
+         typedef Functionname = void Function();
+        
+         // ClassName, ExtensionName, EnumName, MixinName and FunctionName are
+         in the UpperCamelCase format
 
  **# Good**
 
->     class ClassName {}
->    
->     extension ExtensionName on String {}
->    
->     enum EnumName {}
->    
->     mixin MixinName{}
->    
->     typedef FunctionName = void Function();
+     class ClassName {}
+   
+     extension ExtensionName on String {}
+    
+     enum EnumName {}
+    
+     mixin MixinName{}
+    
+     typedef FunctionName = void Function();
 
 2.  Libraries, packages, directories, and source files name should be in
     snake_case(lowercase_with_underscores)
     
     **# Bad**
 
->     mypackage
->    
->     └─ lib
->    
->         └─ bottom-nav.dart
->
+         mypackage    
+         └─ lib
+             └─ bottom-nav.dart
+
  **# Good**
 
->     my_package
->    
->     └─ lib
->
->         └─ bottom_nav.dart
+     my_package
+     └─ lib
+         └─ bottom_nav.dart
 
 3.  **Name imports prefixes should be in
     snake_case(lower_with_underscores)**
     
    **# Bad**
 
->     import 'package:dio/dio.dart' as Dio;
+     import 'package:dio/dio.dart' as Dio;
  
    **# Good**
 
->     import 'package:dio/dio.dart' as dio;
+     import 'package:dio/dio.dart' as dio;
 
 4. **Variables, constants, parameters, and named parameters should be
     in lowerCamelCase.**
     
     **# Bad**
 
->     int phone_number;
->     const pie_value=3.14;
->     
->     // parameters
->     double calculateBMI(int weight_in_kg, int height_in_meter) {
->      return weight_in_kg / (height_in_meter * height_in_meter);
->     }
->     //named parameters
->     double calculateBMI({int? weight_in_kg, int? height_in_meter}) {
->      return weight_in_kg / (height_in_meter * height_in_meter);
->     }
+         int phone_number;
+         const pie_value=3.14;
+         
+         // parameters
+         double calculateBMI(int weight_in_kg, int height_in_meter) {
+          return weight_in_kg / (height_in_meter * height_in_meter);
+         }
+         //named parameters
+         double calculateBMI({int? weight_in_kg, int? height_in_meter}) {
+          return weight_in_kg / (height_in_meter * height_in_meter);
+         }
 
    
 **# Good**
 
->     int phoneNumber;
->     const pieValue=3.14;
->     
->     // parameters
->     double calculateBMI(int weightInKg, int heightInMeter) {
->      return weightInKg / (heightInMeter * heightInMeter);
->     }
->     //named parameters
->     double calculateBMI({int? weightInKg, int? heightInMeter}) {
->      if(weightInKg !=null && heightInMeter !=null){
->      return weightInKg / (heightInMeter * heightInMeter);
->       }
->     }
+         int phoneNumber;
+         const pieValue=3.14;
+         
+         // parameters
+         double calculateBMI(int weightInKg, int heightInMeter) {
+          return weightInKg / (heightInMeter * heightInMeter);
+         }
+         //named parameters
+         double calculateBMI({int? weightInKg, int? heightInMeter}) {
+          if(weightInKg !=null && heightInMeter !=null){
+          return weightInKg / (heightInMeter * heightInMeter);
+           }
+         }
 
 
 5.  **Proper meaningful names should be followed.**
     
     **# Bad**
 
->     Color bg;
->     int age(Date date);
+         Color bg;
+         int age(Date date);
      
  **# Good**
 
->     Color backgroundColor;
->     int calculateAge(Date dob);
+         Color backgroundColor;
+         int calculateAge(Date dob);
 
 6.  **Private variable names are preceded with underscores.**
     
->     class ClassName {
->     String _variableName;
->     }
+         class ClassName {
+         String _variableName;
+        }
 
 
 ## **Use Nullable operators:**
@@ -123,26 +119,26 @@
     
     **# Bad**
 
->     String? name;
->    
->     name= name==null? "": name;
+         String? name;
+        
+         name= name==null? "": name;
 
  **# Good**
 
->     String? name;   
->     name= name ?? "";
+         String? name;   
+         name= name ?? "";
 
 2.  **?. (null aware) operator:**
     
     **# Bad**
 
->     String? name;
->     name= name==null? null: name.length.toString();
+         String? name;
+         name= name==null? null: name.length.toString();
  
  **# Good**
 
->     String? name;  
->     name=name?.length.toString();
+         String? name;  
+         name=name?.length.toString();
 
 3.  **Prefer is Operator Over as for Safer Type Checking:**
 
@@ -153,90 +149,89 @@
     
 **# Bad**
 
->     (person as Person).name="Ashish";
+         (person as Person).name="Ashish";
     
 **# Good**
     
->     if(person is Person){
->      person.name="Ashish";
->     }
+         if(person is Person){
+          person.name="Ashish";
+         }
 
 
 4.  **Avoid the unnecessary creation of lambdas
 
 **# Bad**
 
->     void main(){
->      List<int> oddNumber=[1,3,4,5,6,7,9,11];
->      oddNumber.forEach((number){
->      print(number);
->      });
->     }
+         void main(){
+          List<int> oddNumber=[1,3,4,5,6,7,9,11];
+          oddNumber.forEach((number){
+          print(number);
+          });
+         }
 
      
    **# Good**
    
->     void main(){
->      List<int> oddNumber=[1,3,4,5,6,7,9,11];
->      oddNumber.forEach(print);
->     }
+         void main(){
+          List<int> oddNumber=[1,3,4,5,6,7,9,11];
+          oddNumber.forEach(print);
+         }
 
 
 ## **Simplify Your Code with Spread Collection**
 
-> Utilizing spread collections simplifies the code when you already have
-> existing items stored in another collection.
+ Utilizing spread collections simplifies the code when you already have existing items stored in another collection.
 
  **# Bad**
 
->     List<int> firstFiveOddNumber=[1,3,5,7,9];   
->     List<int> secondFiveOddNumber=[11,13,15,17,19];   
->     firstFiveOddNumber.addAll(secondFiveOddNumber);
+     List<int> firstFiveOddNumber=[1,3,5,7,9];   
+     List<int> secondFiveOddNumber=[11,13,15,17,19];   
+     firstFiveOddNumber.addAll(secondFiveOddNumber);
    
 **# Good**
     
->     List<int> secondFiveOddNumber=[11,13,15,17,19];    
->     List<int> firstFiveOddNumber=[1,3,5,7,9,...secondFiveOddNumber];
+     List<int> secondFiveOddNumber=[11,13,15,17,19];    
+     List<int> firstFiveOddNumber=[1,3,5,7,9,...secondFiveOddNumber];
 
 ## **Simplify Object Operations with the Cascades Operation**
 
 The Cascades (..) operator is ideal for executing a series of operations
 on the same object, enabling a more concise and readable code.
 
->     class Person {
->      String? name;
->      int? age;
->      Person({
->        this.name,
->        this.age,
->      });
->     
->      @override
->      String toString() {
->        return "name: $name age $age";
->      }
->     }
+     class Person {
+      String? name;
+      int? age;
+      Person({
+        this.name,
+        this.age,
+      });
+     
+      @override
+      String toString() {
+        return "name: $name age $age";
+      }
+     }
 
      
  **# Bad**
 
->     void main(){
->     final person=Person();
->      person.name="Ashish";
->      person.age=25;
->      print(person.toString());
->     }
+     void main(){
+     final person=Person();
+      person.name="Ashish";
+      person.age=25;
+      print(person.toString());
+     }
 
  
  **# Good**
 
->     void main(){
->     final person=Person();
->      person
->        ..name="Ashish"
->        ..age=25;
->      print(person.toString());
->     }
+     void main(){
+     final person=Person();
+      person
+        ..name="Ashish"
+        ..age=25;
+      print(person.toString());
+     }
 
 
 
@@ -388,34 +383,34 @@ options and prevent log line discarding in certain situations.
 
     **# Bad**
 
-     class LoginPage extends StatelessWidget {
-     const LoginPage({super.key});
-     
-      @override
-      Widget build(BuildContext context) {
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: const Color(0xff000000), // bad
-            title: const Text("Login page"),
-          ),
-          body: Column(
-            children: [
-          TextInput(
-                label: "email",
-                hintText: "email address",
-                validator: (value) {   // bad
-                  if (value!.isEmpty) {
-                    return 'Please enter';
-                  } else {
-                    return null;
-                  }
-                },
-              )
-            ],
-          ),
-        );
-      }
-     }
+         class LoginPage extends StatelessWidget {
+         const LoginPage({super.key});
+         
+          @override
+          Widget build(BuildContext context) {
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: const Color(0xff000000), // bad
+                title: const Text("Login page"),
+              ),
+              body: Column(
+                children: [
+              TextInput(
+                    label: "email",
+                    hintText: "email address",
+                    validator: (value) {   // bad
+                      if (value!.isEmpty) {
+                        return 'Please enter';
+                      } else {
+                        return null;
+                      }
+                    },
+                  )
+                ],
+              ),
+            );
+          }
+         }
 
 
  **# Good**
