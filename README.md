@@ -118,7 +118,7 @@
 >    
 >     }
 
-5.  **Proper meaningful names should be followed.**\
+5.  **Proper meaningful names should be followed.**
     
     \# Bad
 
@@ -130,7 +130,7 @@
 >     Color backgroundColor;
 >     int calculateAge(Date dob);
 
-6.  **Private variable names are preceded with underscores.**\
+6.  **Private variable names are preceded with underscores.**
     
 >      class ClassName {
 >    
@@ -140,19 +140,19 @@
 
 ## **Use Nullable operators:**
 
-1.  **?? (if null) operator:**\
+1.  **?? (if null) operator:**
     
     \# Bad
 
 >     String? name;
 >    
->     name= name==null? \"unknown\": name;\
+>     name= name==null? "": name;
 
  \# Good
 >
 >     String? name;
 >    
->     name= name ?? \"unknown\";
+>     name= name ?? "";
 
 2.  **?. (null aware) operator:**\
     
