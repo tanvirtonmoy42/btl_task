@@ -201,7 +201,7 @@
 >
 >     }
 >     
-   \# Good**
+   **# Good**
    
 >     void main(){
 >    
@@ -214,18 +214,18 @@
 ## **Simplify Your Code with Spread Collection**
 
 > Utilizing spread collections simplifies the code when you already have
-> existing items stored in another collection.\
-> 
-> \# Bad
->
+> existing items stored in another collection.
+
+ **# Bad**
+
 >     List<int> firstFiveOddNumber=[1,3,5,7,9];
 >    
 >     List<int> secondFiveOddNumber=[11,13,15,17,19];
 >    
 >     firstFiveOddNumber.addAll(secondFiveOddNumber);
 >     
-> \# Good
->    
+**# Good**
+    
 >     List<int> secondFiveOddNumber=[11,13,15,17,19];
 >    
 >     List<int> firstFiveOddNumber=[1,3,5,7,9,...secondFiveOddNumber];
@@ -253,13 +253,13 @@ on the same object, enabling a more concise and readable code.
 >
 >     String toString() {
 >    
->         return \"name: \$name age \$age\";
+>         return "name: $name age $age";
 >    
 >         }
 >    
 >     }
 >     
- # Bad
+ **# Bad**
 
 >     void main(){
 >    
@@ -273,7 +273,7 @@ on the same object, enabling a more concise and readable code.
 >    
 >     }
  
- # Good
+ **# Good**
 
 >     void main(){
 >    
@@ -405,11 +405,11 @@ options and prevent log line discarding in certain situations.
     
     # utils.dart
 
->     import \'package:intl/intl.dart\';
+>     import 'package:intl/intl.dart';
 >    
 >     String formatDateTime(DateTime dateTime) {
 >    
->     final formatter = DateFormat(\'yyyy-MM-dd HH:mm:ss\');
+>     final formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
 >    
 >     return formatter.format(dateTime);
 >    
@@ -558,7 +558,7 @@ options and prevent log line discarding in certain situations.
 >    
 >     if (value.isEmpty) {
 >    
->     return \'Please enter\';
+>     return 'Please enter';
 >    
 >     } else {
 >    
@@ -637,152 +637,153 @@ options and prevent log line discarding in certain situations.
 
  **# Bad**
 
-> class LoginPage extends StatefulWidget {
->
-> const LoginPage({super.key});
->
-> \@override
->
-> State\<LoginPage\> createState() =\> \_LoginPageState();
->
-> }
->
-> class \_LoginPageState extends State\<LoginPage\> {
->
-> bool \_secureText = true;
->
-> \@override
->
-> Widget build(BuildContext context) {
->
-> return Scaffold(
->
-> appBar: AppBar(
->
-> title: const Text(\"Login page\"),
->
-> ),
->
-> body: Column(
->
-> children: \[
->
-> const TextInput(
->
-> label: \"Email\",
->
-> hintText: \"Email address\",
->
-> ),
->
-> TextInput(
->
-> label: \"Password\",
->
-> hintText: \"Password\",
->
-> obscureText: \_secureText,
->
-> suffix: IconButton(
->
-> onPressed: () {
->
-> setState(() {
->
-> \_secureText = !\_secureText;
->
-> });
->
-> },
->
-> icon: Icon(
->
-> \_secureText ?
->
-> Icons.visibility_off
->
-> : Icons.visibility)),
->
-> ),
->
-> ElevatedButton(
->
-> onPressed: () {},
->
-> child: const Text(\"Login\"))
->
-> \],
->
-> ),
->
-> );
->
-> }
->
-> }\
-> \
-> **\# Good**
->
-> class LoginPage extends StatelessWidget {
->
-> const LoginPage({super.key});
->
-> \@override
->
-> Widget build(BuildContext context) {
->
-> return Scaffold(
->
-> appBar: AppBar(
->
-> title: const Text(\"Login page\"),
->
-> ),
->
-> body: Column(
->
-> children: \[
->
-> const TextInput(
->
-> label: \"Email\",
->
-> hintText: \"Email address\",
->
-> ),
->
-> const TextInput(
->
-> label: \"Password\",
->
-> hintText: \"Password\",
->
-> obscureText: true,
->
-> ),
->
-> ElevatedButton(
->
-> onPressed: () {},
->
-> child: const Text(\"Login\"))
->
-> \],
->
-> ),
->
-> );
->
-> }
->
-> }
+>     class LoginPage extends StatefulWidget {
+>    
+>     const LoginPage({super.key});
+>    
+>     @override
+>    
+>     State<LoginPage> createState() => _LoginPageState();
+>    
+>     }
+>    
+>     class _LoginPageState extends State<LoginPage> {
+>    
+>         bool _secureText = true;
+>    
+>         @override
+>    
+>         Widget build(BuildContext context) {
+>    
+>             return Scaffold(
+>    
+>             appBar: AppBar(
+>    
+>                 title: const Text("Login page"),
+>    
+>             ),
+>    
+>             body: Column(
+>    
+>             children: [
+>    
+>                 const TextInput(
+>    
+>                 label: "Email",
+>    
+>                 hintText: "Email address",
+>    
+>                 ),
+>    
+>                 TextInput(
+>    
+>                     label: "Password",
+>    
+>                     hintText: "Password",
+>    
+>                     obscureText: _secureText,
+>    
+>                     suffix: IconButton(
+>    
+>                     onPressed: () {
+>    
+>                     setState(() {
+>    
+>                         _secureText = !_secureText;
+>        
+>                     });
+>    
+>                     },
+>    
+>                     icon: Icon(
+>    
+>                     _secureText ?
+>    
+>                     Icons.visibility_off
+>    
+>                 : Icons.visibility)),
+>    
+>                     ),
+>    
+>                 ElevatedButton(
+>    
+>                 onPressed: () {},
+>    
+>                 child: const Text("Login"))
+>    
+>                  ],
+>    
+>             ),
+>    
+>             );
+>    
+>         }
+>    
+>     }
 
-## **[Follow Linting rules]{.underline}**
+ **# Good**
 
-1.  **DO avoid relative imports for files in lib/. Use package
-    imports.**\
-    \
-    **\# Bad**
+>     class LoginPage extends StatelessWidget {
+>    
+>     const LoginPage({super.key});
+>    
+>     @override
+>    
+>     Widget build(BuildContext context) {
+>    
+>     return Scaffold(
+>    
+>         appBar: AppBar(
+>        
+>         title: const Text("Login page"),
+>    
+>         ),
+>
+>         body: Column(
+>    
+>         children: [
+>    
+>             const TextInput(
+>    
+>                 label: "Email",
+>    
+>                 hintText: "Email address",
+>    
+>                 ),
+>    
+>             const TextInput(
+>    
+>                 label: "Password",
+>    
+>                 hintText: "Password",
+>    
+>                  obscureText: true,
+>        
+>                 ),
+>    
+>             ElevatedButton(
+>    
+>                 onPressed: () {},
+>    
+>                 child: const Text("Login")
+>     
+>                 )
+>    
+>             ],
+>    
+>             ),
+>    
+>         );
+>    
+>         }
+>    
+>     }
+
+## **Follow Linting rules**
+
+1.  **DO avoid relative imports for files in lib. Use package imports.**
+    
+    **# Bad**
 
 > import \'widgets/text_input.dart\';
 >
