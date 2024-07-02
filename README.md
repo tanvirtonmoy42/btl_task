@@ -1038,7 +1038,7 @@ on writing amazing applications and less on mundane tasks.
 > Publisher: hzgood
 >
 > VS Marketplace Link:
-> [[https://marketplace.visualstudio.com/items?itemName=hzgood.dart-data-class-generator]{.underline}](https://marketplace.visualstudio.com/items?itemName=hzgood.dart-data-class-generator)
+> [[https://marketplace.visualstudio.com/items?itemName=hzgood.dart-data-class-generator]](https://marketplace.visualstudio.com/items?itemName=hzgood.dart-data-class-generator)
 >
 > Using this package you can generate all commonly used components that
 > are used in a data model including formMap, toMap etc. It also
@@ -1054,4 +1054,4 @@ on writing amazing applications and less on mundane tasks.
 > Publisher: Robert Brunhage
 >
 > VS Marketplace Link:
-> [[https://marketplace.visualstudio.com/items?itemName=robert-brunhage.flutter-riverpod-snippets]{.underline}](https://marketplace.visualstudio.com/items?itemName=robert-brunhage.flutter-riverpod-snippets)
+> [[https://marketplace.visualstudio.com/items?itemName=robert-brunhage.flutter-riverpod-snippets]](https://marketplace.visualstudio.com/items?itemName=robert-brunhage.flutter-riverpod-snippets)
