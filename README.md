@@ -1,11 +1,10 @@
-### **[Flutter Best Practices and Coding Guidelines]{.underline}**
+### **[Flutter Best Practices and Coding Guidelines]**
 
 #### ** Naming convention:**
 
-1.  **Classes, enums, typedefs, mixin, and extensions name should in
-    UpperCamelCase**\
-    \
-    \# Bad
+1.  **Classes, enums, typedefs, mixin, and extensions name should in UpperCamelCase**
+    
+    **# Bad**
 
 >     class Classname {
 >    
